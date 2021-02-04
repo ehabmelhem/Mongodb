@@ -81,9 +81,7 @@ function App() {
       <button onClick={handelshowClick}>showAll</button>
       <div>
         {allCats.map((cat, index) => {
-          return (
-            <Cat key={index} name={cat.name} age={cat.age} url={cat.src} />
-          );
+          <Cat key={index} name={cat.name} age={cat.age} url={cat.src} />;
         })}
       </div>
     </div>

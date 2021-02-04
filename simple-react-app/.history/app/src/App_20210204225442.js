@@ -1,9 +1,8 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import Cat from "./Compents/Cat";
 
 function App() {
-  const [allCats, setAll] = useState([]);
+const [all]
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
   const [url, setUrl] = useState("");
@@ -12,7 +11,6 @@ function App() {
       .then((r) => r.json())
       .then((data) => {
         console.log(data);
-        setAll(data);
       });
   };
   const handelclick = (e) => {
@@ -79,13 +77,9 @@ function App() {
         </button>
       </form>
       <button onClick={handelshowClick}>showAll</button>
-      <div>
-        {allCats.map((cat, index) => {
-          return (
-            <Cat key={index} name={cat.name} age={cat.age} url={cat.src} />
-          );
-        })}
-      </div>
+      {
+
+      }
     </div>
   );
 }

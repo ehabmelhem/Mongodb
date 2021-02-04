@@ -1,0 +1,14 @@
+.cat > div {
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
+}
+.cat > img {
+  border-radius: 999px;
+}
+.cat {
+  padding: 10px;
+  border: 1px solid gray;
+  width: fit-content;
+  margin-left: 100px;
+}
