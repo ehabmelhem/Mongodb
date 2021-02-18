@@ -30,6 +30,24 @@ app.get("/get-all", (req, res) => {
   });
 });
 
+app.get("/update-name", async (req, res) => {
+  const { name } = req.query;
+  catModel.update({ name: name }, { name: "ehab11111" }).then(() => {
+    console.log(data);
+  });
+  catModel.find({}).then((docs) => {
+    res.send(docs);
+  });
+});
+
+app.get("/remove-name", async (req, res) => {
+  const { name } = req.query;
+  await catModel.remove({ name: name });
+  await catModel.find({}).then((docs) => {
+    res.send(docs);
+  });
+});
+
 app.post("/send-data", (req, res) => {
   const { name, age, url } = req.body;
   var add = new catModel({ name: name, age: age, src: url });

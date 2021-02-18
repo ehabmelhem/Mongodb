@@ -7,8 +7,26 @@ function App() {
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
   const [url, setUrl] = useState("");
-  const handelshowClick = (e) => {
-    fetch("/get-all")
+  const [update, setUpdate] = useState("");
+  const [remove, setRemove] = useState("");
+  const remove_handler = async () => {
+    await fetch(`/remove-name?name=${remove}`)
+      .then((r) => r.json())
+      .then((data) => {
+        console.log(data);
+        setAll(data);
+      });
+  };
+  const handelshowClick = async (e) => {
+    await fetch("/get-all")
+      .then((r) => r.json())
+      .then((data) => {
+        console.log(data);
+        setAll(data);
+      });
+  };
+  const update_handler = async () => {
+    await fetch(`/update-name?name=${update}`)
       .then((r) => r.json())
       .then((data) => {
         console.log(data);
@@ -86,6 +104,25 @@ function App() {
           );
         })}
       </div>
+
+      <input
+        value={update}
+        onChange={(e) => {
+          setUpdate(e.target.value);
+        }}
+        type="text"
+        placeholder="update by name"
+      />
+      <button onClick={update_handler}>update</button>
+      <input
+        value={remove}
+        onChange={(e) => {
+          setRemove(e.target.value);
+        }}
+        type="text"
+        placeholder="update by name"
+      />
+      <button onClick={remove_handler}>remove</button>
     </div>
   );
 }
